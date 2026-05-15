@@ -2,6 +2,11 @@
 
 *Copy and paste the bullets below that best fit the role you are applying for. They are written using the STAR method and optimized for ATS systems.*
 
+### Full-Stack Software Engineer Role
+- **Developed a full-stack distributed scheduling platform**, engineering both a high-throughput Python FastAPI backend and a responsive React administration dashboard with real-time system metrics.
+- **Engineered an end-to-end orchestration UI** utilizing React, Vite, and modern CSS to visualize complex state machines, manage distributed cron jobs, and execute retry policies against a PostgreSQL dead-letter queue.
+- **Containerized a multi-tier architecture** with Docker Compose, seamlessly networking a React frontend, Python API, Redis cluster, PostgreSQL database, and an integrated Prometheus observability stack.
+
 ### Backend / Distributed Systems Engineer Role
 - **Architected and developed a distributed job scheduling engine** using Python, FastAPI, and PostgreSQL, orchestrating asynchronous workloads across multiple worker nodes to achieve >500 jobs/sec throughput.
 - **Engineered a deadlock-free concurrent queue** by leveraging PostgreSQL `SELECT FOR UPDATE SKIP LOCKED` combined with SQLAlchemy, completely eliminating the need for complex external brokers while guaranteeing exactly-once processing.

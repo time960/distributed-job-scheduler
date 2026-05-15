@@ -67,3 +67,47 @@ def get_metrics(session: Session = Depends(get_db)):
 
     # Return prometheus format
     return Response(content=generate_latest(), media_type=CONTENT_TYPE_LATEST)
+
+@router.get("/metrics/simple")
+def get_metrics_simple(session: Session = Depends(get_db)):
+    jobs_result = session.execute(text("""
+        SELECT status, COUNT(*) as count 
+        FROM jobs 
+        GROUP BY status
+    """)).fetchall()
+    
+    workers_result = session.execute(text("""
+        SELECT status, COUNT(*) as count 
+        FROM workers 
+        GROUP BY status
+    """)).fetchall()
+
+    metrics = {
+        "jobs": {
+            "total": 0,
+            "pending": 0,
+            "running": 0,
+            "success": 0,
+            "failed": 0,
+            "canceled": 0,
+            "dead_letter": 0
+        },
+        "workers": {
+            "active": 0,
+            "dead": 0,
+            "stopped": 0
+        }
+    }
+    
+    for row in jobs_result:
+        status = row.status.lower()
+        if status in metrics["jobs"]:
+            metrics["jobs"][status] = row.count
+            metrics["jobs"]["total"] += row.count
+            
+    for row in workers_result:
+        status = row.status.lower()
+        if status in metrics["workers"]:
+            metrics["workers"][status] = row.count
+            
+    return metrics

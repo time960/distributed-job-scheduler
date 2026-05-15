@@ -69,6 +69,7 @@ graph TD
 ---
 
 ## 💻 Tech Stack
+- **Frontend**: React, Vite, Axios, Plain CSS (Premium Aesthetic)
 - **Backend Framework**: Python 3.11, FastAPI, Pydantic
 - **Database Layer**: PostgreSQL 15, SQLAlchemy (Synchronous ORM), Alembic
 - **Caching & Locks**: Redis 7
@@ -136,6 +137,30 @@ curl -X POST "http://localhost:8000/schedules" \
 ```bash
 curl -s http://localhost:8000/chaos/status | jq
 ```
+
+---
+
+## 🖥 React Admin Dashboard
+
+A professional, responsive React dashboard is included to manage the orchestration engine. 
+
+### Architecture
+- **Frontend**: Served via Vite on port `5173`.
+- **Communication**: Communicates with the FastAPI backend via Axios, utilizing standard RESTful endpoints and a simplified JSON metrics payload.
+- **Design**: Built with modern glassmorphism UI, variables-driven dark mode, and dynamic metric visualizations.
+
+### Features
+- **Dashboard**: High-level real-time overview of jobs and worker statuses.
+- **Jobs**: Filter jobs, create new ad-hoc tasks, cancel pending runs, and retry failed tasks.
+- **Schedules**: Define complex cron expressions and easily pause/resume distributed background processing.
+- **Workers**: Monitor worker health, heartbeats, and exact node process counts.
+- **Leader Election**: Real-time view into the Redis-backed lock state for the active scheduler node.
+- **Monitoring Quick Links**: Easy access to Prometheus, Grafana, Swagger, and Locust.
+
+### How to Access
+Navigate to [http://localhost:5173](http://localhost:5173) after running `docker compose up --build`.
+
+*(Screenshots placeholder: Insert images of the Dashboard here)*
 
 ---
 

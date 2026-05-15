@@ -9,6 +9,7 @@ Modern asynchronous systems require resilient background processing. Basic messa
 This project solves these issues by implementing a synchronized, stateful distributed architecture capable of zero-downtime execution and 100% processing guarantees.
 
 ## 🛠 Core Technologies
+- **Frontend**: React, Vite, Axios
 - **API Framework**: FastAPI (Python 3.11)
 - **Database**: PostgreSQL with SQLAlchemy ORM
 - **Cache & Locks**: Redis
@@ -30,9 +31,10 @@ This project solves these issues by implementing a synchronized, stateful distri
    - Simulated extreme "retry storms", worker container terminations mid-processing, and database connection losses.
    - Guaranteed 0% data loss and exactly-once processing (idempotency) utilizing transactional commits.
 
-4. **Production Observability**
+4. **Production Observability & UI**
+   - Built a sleek, glassmorphism-styled React Admin Dashboard for real-time cluster management.
+   - Designed comprehensive Grafana dashboards tracking API latencies (p95, p99), dynamic worker pools, and queue backlogs.
    - Built custom Prometheus middleware for FastAPI.
-   - Designed comprehensive Grafana dashboards tracking API latencies (p95, p99), dynamic worker pools, and queue backlogs in real-time.
 
 ## 💡 Why This Project Stands Out
 This is not a simple "CRUD" app. It deeply explores complex computer science and distributed system problems:

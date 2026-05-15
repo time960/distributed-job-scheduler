@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from app.api import jobs, schedules, workers, leader, metrics, chaos
 import time
 from prometheus_client import Counter, Histogram
@@ -7,6 +8,14 @@ REQUEST_COUNT = Counter('api_requests_total', 'Total HTTP Requests', ['method', 
 REQUEST_LATENCY = Histogram('api_request_duration_seconds', 'HTTP Request Latency', ['method', 'endpoint'])
 
 app = FastAPI(title="Distributed Job Scheduler")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.middleware("http")
 async def metrics_middleware(request: Request, call_next):
